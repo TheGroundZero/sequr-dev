@@ -1,0 +1,243 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us><head>&lt; <title itemprop=name>misDIRection :: Sequr (dev)</title>
+<script defer language=javascript type=text/javascript src=/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js></script><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="ie=edge"><meta name=robots content="noodp, noydir"><meta name=googlebot content="noodp, noydir"><link rel=canonical href=https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-misdirection/ itemprop=url><meta name=url content="https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-misdirection/"><link rel=icon href=favicon.ico><meta itemprop=name content="misDIRection"><meta itemprop=description content="Write-up of the misDIRection misc challenge by incidrthreat on HackTheBox.eu. During an assessment of a unix system the HTB team found a suspicious directory."><meta itemprop=datePublished content="2019-09-04T09:59:24+00:00"><meta itemprop=dateModified content="2019-09-04T09:59:24+00:00"><meta itemprop=wordCount content="1258"><meta itemprop=image content="https://dev.sequr.be/img/htb-incidrthreat.png"><meta itemprop=keywords content="Challenge,HackTheBox.eu,Incidrthreat,Misc"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://dev.sequr.be/img/htb-incidrthreat.png"><meta name=twitter:title content="misDIRection"><meta name=twitter:description content="Write-up of the misDIRection misc challenge by incidrthreat on HackTheBox.eu. During an assessment of a unix system the HTB team found a suspicious directory."><meta property="og:url" content="https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-misdirection/"><meta property="og:site_name" content="Sequr (dev)"><meta property="og:title" content="misDIRection"><meta property="og:description" content="Write-up of the misDIRection misc challenge by incidrthreat on HackTheBox.eu. During an assessment of a unix system the HTB team found a suspicious directory."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="blog"><meta property="article:published_time" content="2019-09-04T09:59:24+00:00"><meta property="article:modified_time" content="2019-09-04T09:59:24+00:00"><meta property="article:tag" content="Challenge"><meta property="article:tag" content="HackTheBox.eu"><meta property="article:tag" content="Incidrthreat"><meta property="article:tag" content="Misc"><meta property="og:image" content="https://dev.sequr.be/img/htb-incidrthreat.png"><meta name=description content="Write-up of the misDIRection misc challenge by incidrthreat on HackTheBox.eu. During an assessment of a unix system the HTB team found a suspicious directory."><meta itemprop=description content="Write-up of the misDIRection misc challenge by incidrthreat on HackTheBox.eu. During an assessment of a unix system the HTB team found a suspicious directory."><meta property="og:updated_time" content="2019-09-04T09:59:24Z"><link rel=sitemap type=application/xml title=Sitemap href=https://dev.sequr.be/sitemap.xml><meta name=apple-mobile-web-app-title content="Sequr (dev)"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black"><link type=text/css rel=stylesheet href=/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css integrity="sha256-lKM5g2+J8NJfMZgMtrBjHaIeIK8Sgwh0fOROBSXrFu8=" crossorigin=anonymous><style>body{--sidebar-bg-color:#202020;--sidebar-img-border-color:#515151;--sidebar-p-color:#909090;--sidebar-h1-color:#FFF;--sidebar-a-color:#FFF;--sidebar-socials-color:#FFF;--text-color:#222;--bkg-color:#FAF9F6;--post-title-color:#303030;--list-color:#5A5A5A;--link-color:#268BD2;--date-color:#515151;--table-border-color:#E5E5E5;--table-stripe-color:#F9F9F9;--code-color:#000;--code-background-color:#E5E5E5;--code-block-color:#FFF;--code-block-background-color:#272822;--moon-sun-color:#FFF;--moon-sun-background-color:#515151}body.dark-theme{--text-color:#EEE;--bkg-color:#121212;--post-title-color:#DBE2E9;--list-color:#9D9D9D;--link-color:#268BD2;--date-color:#9A9A9A;--table-border-color:#515151;--table-stripe-color:#202020;--code-color:#FFF;--code-background-color:#515151;--code-block-color:#FFF;--code-block-background-color:#272822}body{background-color:var(--bkg-color)}</style></head><body><div class=wrapper><aside class=sidebar><div class="container sidebar-sticky"><div class=light-dark align=right><button class=btn-light-dark title="Toggle light/dark mode"><svg class="moon" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentcolor" d="M6 .278a.768.768.0 01.08.858 7.208 7.208.0 00-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527.0 1.04-.055 1.533-.16a.787.787.0 01.81.316.733.733.0 01-.031.893A8.349 8.349.0 018.344 16C3.734 16 0 12.286.0 7.71.0 4.266 2.114 1.312 5.124.06A.752.752.0 016 .278z"/></svg><svg class="sun" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentcolor" d="M8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.5.5.0 01.5.5v2a.5.5.0 01-1 0v-2A.5.5.0 018 0zm0 13a.5.5.0 01.5.5v2a.5.5.0 01-1 0v-2A.5.5.0 018 13zm8-5a.5.5.0 01-.5.5h-2a.5.5.0 010-1h2a.5.5.0 01.5.5zM3 8a.5.5.0 01-.5.5h-2a.5.5.0 010-1h2A.5.5.0 013 8zm10.657-5.657a.5.5.0 010 .707l-1.414 1.415a.5.5.0 11-.707-.708l1.414-1.414a.5.5.0 01.707.0zm-9.193 9.193a.5.5.0 010 .707L3.05 13.657a.5.5.0 01-.707-.707l1.414-1.414a.5.5.0 01.707.0zm9.193 2.121a.5.5.0 01-.707.0l-1.414-1.414a.5.5.0 01.707-.707l1.414 1.414a.5.5.0 010 .707zM4.464 4.465a.5.5.0 01-.707.0L2.343 3.05a.5.5.0 11.707-.707l1.414 1.414a.5.5.0 010 .708z"/></svg></button></div><div class=sidebar-about><h1 class=brand><a href=https://dev.sequr.be/><img src=logo.png alt="brand image">
+</a><a href=https://dev.sequr.be/><h1>Sequr (dev)</h1></a></h1><p class=lead>Dev version of sequr.be. This site may break at any time.</p></div><nav><ul class=sidebar-nav><li class=heading><a href=/about/>About</a></li><li class=heading>Blog</li><li class=heading><a href=/privacy/>Privacy</a></li></ul></nav><a target=_blank class=social title="RSS Feed" href=/posts/index.xml><svg width="1em" height="1.2em" viewBox="0 0 1280 1280"><g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentcolor"><path d="M2295 11929c-284-12-642-45-707-65-17-5-18-63-18-1039 0-569 4-1036 8-1039 5-3 74 6 153 19 510 86 1168 95 1789 25 1348-153 2602-677 3670-1531 385-308 820-744 1126-1129 842-1060 1362-2313 1514-3650 70-621 61-1279-25-1789-13-79-22-148-19-153 3-4 471-8 1039-8h1035l5 23c51 225 85 942 67 1419-23 605-77 1044-198 1617-294 14e2-927 2734-1823 3846-1043 1295-2364 2259-3909 2854-1158 447-2451 656-3707 6e2z"/><path d="M2255 7845c-269-25-620-81-667-106-17-9-18-55-18-899 0-706 3-890 13-890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207-107 2267-823 2814-1902 166-327 268-637 330-1001 38-227 48-384 42-662-8-348-44-590-126-831-23-66-41-126-41-132 0-10 184-13 890-13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782-59 703-233 1323-545 1945-481 956-1313 1788-2270 2268-620 310-1239 483-1940 542-165 14-669 10-840-5z"/><path d="M2519 3815c-391-66-725-336-868-703-79-201-96-462-45-677 83-344 338-641 666-774 116-47 205-69 330-80 412-39 811 153 1040 5e2 193 292 240 648 128 981-135 403-492 699-914 757-1e2 14-241 12-337-4z"/></g></svg></a><p class=footnote>&copy; 2019
+• <a class="p-name u-url" href=https://sequr.be>DezeStijn</a>
+• &lt;a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0&lt;/a></p></div></aside><main class="content container"><div class=post><div class=info><h1 class=post-title><a href=https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-misdirection/>misDIRection</a></h1><div class=headline><div><span>DezeStijn - </span><time datetime=2019-09-04T09:59:24Z class=post-date>September 4, 2019
+</time><span>- </span><span class=reading-time><span>6 mins read</span></span></div><ul class=tags><li class=tag-Challenge><a href=https://dev.sequr.be/tags/challenge>Challenge</a></li><li class=tag-HackTheBox.eu><a href=https://dev.sequr.be/tags/hackthebox.eu>HackTheBox.eu</a></li><li class=tag-incidrthreat><a href=https://dev.sequr.be/tags/incidrthreat>incidrthreat</a></li><li class=tag-Misc><a href=https://dev.sequr.be/tags/misc>Misc</a></li></ul></div></div><p><strong>Note to fellow-HTBers:</strong> Only write-ups of retired HTB machines or challenges are allowed.</p><h2 id=challenge-info>Challenge info</h2><p>misDIRection [by <a href=https://www.hackthebox.eu/home/users/profile/442%22 target=_blank>incidrthreat</a>]<br>During an assessment of a unix system the HTB team found a suspicious directory. They looked at everything within but couldn&rsquo;t find any files with malicious intent.</p><h2 id=the-challenge>The challenge</h2><p>We start of by downloading the misDIRection.zip file and verifying it’s sha256sum with the hash displayed on the challenge page.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ echo <span style=color:#e6db74>&#34;31e8e4bd7838c4731831ceb5ca42e2b94430c241aea0cf2814ef8e9bd53c5043 misDIRection.zip&#34;</span> | sha256sum -c -
+</span></span><span style=display:flex><span>misDIRection.zip: OK
+</span></span></code></pre></div><p>We then proceed to unzip this file using the password provided on the challenge page. This will give us a whole directory structure with multiple folders and files.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ unzip misDIRection.zip 
+</span></span><span style=display:flex><span>Archive:  misDIRection.zip
+</span></span><span style=display:flex><span>   creating: .secret/
+</span></span><span style=display:flex><span>   creating: .secret/S/
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>misDIRection.zip<span style=color:#f92672>]</span> .secret/S/1 password: 
+</span></span><span style=display:flex><span> extracting: .secret/S/1             
+</span></span><span style=display:flex><span>   creating: .secret/V/
+</span></span><span style=display:flex><span> extracting: .secret/V/35            
+</span></span><span style=display:flex><span>   creating: .secret/F/
+</span></span><span style=display:flex><span> extracting: .secret/F/2             
+</span></span><span style=display:flex><span> extracting: .secret/F/19            
+</span></span><span style=display:flex><span> extracting: .secret/F/27            
+</span></span><span style=display:flex><span>   creating: .secret/o/
+</span></span><span style=display:flex><span>   creating: .secret/H/
+</span></span><span style=display:flex><span>   creating: .secret/A/
+</span></span><span style=display:flex><span>   creating: .secret/f/
+</span></span><span style=display:flex><span>   creating: .secret/r/
+</span></span><span style=display:flex><span>   creating: .secret/m/
+</span></span><span style=display:flex><span>   creating: .secret/B/
+</span></span><span style=display:flex><span> extracting: .secret/B/23            
+</span></span><span style=display:flex><span>   creating: .secret/a/
+</span></span><span style=display:flex><span>   creating: .secret/O/
+</span></span><span style=display:flex><span>   creating: .secret/h/
+</span></span><span style=display:flex><span>   creating: .secret/t/
+</span></span><span style=display:flex><span>   creating: .secret/2/
+</span></span><span style=display:flex><span> extracting: .secret/2/34            
+</span></span><span style=display:flex><span>   creating: .secret/7/
+</span></span><span style=display:flex><span>   creating: .secret/R/
+</span></span><span style=display:flex><span> extracting: .secret/R/7             
+</span></span><span style=display:flex><span> extracting: .secret/R/3             
+</span></span><span style=display:flex><span>   creating: .secret/b/
+</span></span><span style=display:flex><span>   creating: .secret/z/
+</span></span><span style=display:flex><span> extracting: .secret/z/18            
+</span></span><span style=display:flex><span>   creating: .secret/j/
+</span></span><span style=display:flex><span> extracting: .secret/j/10            
+</span></span><span style=display:flex><span> extracting: .secret/j/12            
+</span></span><span style=display:flex><span>   creating: .secret/P/
+</span></span><span style=display:flex><span>   creating: .secret/y/
+</span></span><span style=display:flex><span>   creating: .secret/d/
+</span></span><span style=display:flex><span> extracting: .secret/d/13            
+</span></span><span style=display:flex><span>   creating: .secret/Y/
+</span></span><span style=display:flex><span>   creating: .secret/q/
+</span></span><span style=display:flex><span>   creating: .secret/c/
+</span></span><span style=display:flex><span>   creating: .secret/6/
+</span></span><span style=display:flex><span>   creating: .secret/8/
+</span></span><span style=display:flex><span>   creating: .secret/U/
+</span></span><span style=display:flex><span> extracting: .secret/U/9             
+</span></span><span style=display:flex><span>   creating: .secret/p/
+</span></span><span style=display:flex><span> extracting: .secret/p/32            
+</span></span><span style=display:flex><span>   creating: .secret/W/
+</span></span><span style=display:flex><span>   creating: .secret/N/
+</span></span><span style=display:flex><span> extracting: .secret/N/25            
+</span></span><span style=display:flex><span> extracting: .secret/N/11            
+</span></span><span style=display:flex><span> extracting: .secret/N/31            
+</span></span><span style=display:flex><span> extracting: .secret/N/33            
+</span></span><span style=display:flex><span>   creating: .secret/g/
+</span></span><span style=display:flex><span>   creating: .secret/n/
+</span></span><span style=display:flex><span>   creating: .secret/e/
+</span></span><span style=display:flex><span> extracting: .secret/e/5             
+</span></span><span style=display:flex><span>   creating: .secret/1/
+</span></span><span style=display:flex><span> extracting: .secret/1/30            
+</span></span><span style=display:flex><span> extracting: .secret/1/22            
+</span></span><span style=display:flex><span>   creating: .secret/s/
+</span></span><span style=display:flex><span> extracting: .secret/s/24            
+</span></span><span style=display:flex><span>   creating: .secret/i/
+</span></span><span style=display:flex><span>   creating: .secret/3/
+</span></span><span style=display:flex><span>   creating: .secret/I/
+</span></span><span style=display:flex><span>   creating: .secret/D/
+</span></span><span style=display:flex><span> extracting: .secret/D/26            
+</span></span><span style=display:flex><span>   creating: .secret/X/
+</span></span><span style=display:flex><span> extracting: .secret/X/29            
+</span></span><span style=display:flex><span> extracting: .secret/X/21            
+</span></span><span style=display:flex><span> extracting: .secret/X/17            
+</span></span><span style=display:flex><span>   creating: .secret/Z/
+</span></span><span style=display:flex><span>   creating: .secret/4/
+</span></span><span style=display:flex><span>   creating: .secret/k/
+</span></span><span style=display:flex><span>   creating: .secret/9/
+</span></span><span style=display:flex><span> extracting: .secret/9/36            
+</span></span><span style=display:flex><span>   creating: .secret/J/
+</span></span><span style=display:flex><span> extracting: .secret/J/8             
+</span></span><span style=display:flex><span>   creating: .secret/C/
+</span></span><span style=display:flex><span> extracting: .secret/C/4             
+</span></span><span style=display:flex><span>   creating: .secret/v/
+</span></span><span style=display:flex><span>   creating: .secret/M/
+</span></span><span style=display:flex><span>   creating: .secret/0/
+</span></span><span style=display:flex><span> extracting: .secret/0/6             
+</span></span><span style=display:flex><span>   creating: .secret/G/
+</span></span><span style=display:flex><span>   creating: .secret/E/
+</span></span><span style=display:flex><span> extracting: .secret/E/14            
+</span></span><span style=display:flex><span>   creating: .secret/Q/
+</span></span><span style=display:flex><span>   creating: .secret/K/
+</span></span><span style=display:flex><span>   creating: .secret/5/
+</span></span><span style=display:flex><span> extracting: .secret/5/16            
+</span></span><span style=display:flex><span>   creating: .secret/x/
+</span></span><span style=display:flex><span> extracting: .secret/x/15            
+</span></span><span style=display:flex><span>   creating: .secret/l/
+</span></span><span style=display:flex><span>   creating: .secret/u/
+</span></span><span style=display:flex><span> extracting: .secret/u/20            
+</span></span><span style=display:flex><span> extracting: .secret/u/28            
+</span></span><span style=display:flex><span>   creating: .secret/L/
+</span></span><span style=display:flex><span>   creating: .secret/T/
+</span></span><span style=display:flex><span>   creating: .secret/w/
+</span></span></code></pre></div><p>Notice how the folder names form an alphanumeric &ldquo;alphabet&rdquo; from 0-9 and a-Z (lower and upper case) and how some folders contain files while others appear to be empty.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ ls -l .secret/
+</span></span><span style=display:flex><span>total <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>2</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>8</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>7</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> <span style=color:#ae81ff>9</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> a
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> A
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> b
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> B
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> c
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>2</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> C
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> d
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> D
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>2</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> e
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> E
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> f
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user <span style=color:#ae81ff>10</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> F
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> g
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> G
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> h
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> H
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> i
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> I
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>8</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> j
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>2</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> J
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> k
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> K
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> l
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> L
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> m
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> M
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> n
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user <span style=color:#ae81ff>16</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> N
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> o
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> O
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> p
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> P
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> q
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> Q
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> r
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> R
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> s
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>2</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> S
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> t
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> T
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>8</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> u
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>2</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> U
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> v
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> V
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> w
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> W
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> x
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user <span style=color:#ae81ff>12</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> X
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> y
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> Y
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>4</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> z
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>1</span> user user  <span style=color:#ae81ff>0</span> May  <span style=color:#ae81ff>2</span>  <span style=color:#ae81ff>2018</span> Z
+</span></span></code></pre></div><p>The files in these folders appear to be numbers. Look closer and notice they form a numeric range from 1 to 36.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ find .secret/ -type f | sort -t/ -k3,3 -n
+</span></span><span style=display:flex><span>.secret/S/1
+</span></span><span style=display:flex><span>.secret/F/2
+</span></span><span style=display:flex><span>.secret/R/3
+</span></span><span style=display:flex><span>.secret/C/4
+</span></span><span style=display:flex><span>.secret/e/5
+</span></span><span style=display:flex><span>.secret/0/6
+</span></span><span style=display:flex><span>.secret/R/7
+</span></span><span style=display:flex><span>.secret/J/8
+</span></span><span style=display:flex><span>.secret/U/9
+</span></span><span style=display:flex><span>.secret/j/10
+</span></span><span style=display:flex><span>.secret/N/11
+</span></span><span style=display:flex><span>.secret/j/12
+</span></span><span style=display:flex><span>.secret/d/13
+</span></span><span style=display:flex><span>.secret/E/14
+</span></span><span style=display:flex><span>.secret/x/15
+</span></span><span style=display:flex><span>.secret/5/16
+</span></span><span style=display:flex><span>.secret/X/17
+</span></span><span style=display:flex><span>.secret/z/18
+</span></span><span style=display:flex><span>.secret/F/19
+</span></span><span style=display:flex><span>.secret/u/20
+</span></span><span style=display:flex><span>.secret/X/21
+</span></span><span style=display:flex><span>.secret/1/22
+</span></span><span style=display:flex><span>.secret/B/23
+</span></span><span style=display:flex><span>.secret/s/24
+</span></span><span style=display:flex><span>.secret/N/25
+</span></span><span style=display:flex><span>.secret/D/26
+</span></span><span style=display:flex><span>.secret/F/27
+</span></span><span style=display:flex><span>.secret/u/28
+</span></span><span style=display:flex><span>.secret/X/29
+</span></span><span style=display:flex><span>.secret/1/30
+</span></span><span style=display:flex><span>.secret/N/31
+</span></span><span style=display:flex><span>.secret/p/32
+</span></span><span style=display:flex><span>.secret/N/33
+</span></span><span style=display:flex><span>.secret/2/34
+</span></span><span style=display:flex><span>.secret/V/35
+</span></span><span style=display:flex><span>.secret/9/36
+</span></span></code></pre></div><p>What would we get if we&rsquo;d extract the folder name based on the file number? Remember that the folder names appear to form an alphabet.<br>Let&rsquo;s use <code>find</code> to extract the filenames, some <code>sort</code> magic to sort based on the number and <code>sed</code> to extract the folders. <code>tr</code> will help in removing the newlines.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ find .secret/ -type f | sort -t/ -k3,3 -n | sed -e <span style=color:#e6db74>&#39;s/.*\/\(.\)\/.*/\1/&#39;</span> &gt;&gt; secret.txt
+</span></span><span style=display:flex><span>$ tr -d <span style=color:#e6db74>&#39;\n&#39;</span> &lt; secret.txt 
+</span></span><span style=display:flex><span>SFRCe0RJUjNjdEx5XzFuX1BsNDFuX1NpN2V9
+</span></span></code></pre></div><p>This string doesn&rsquo;t appear to be the flag, that would&rsquo;ve been too easy :)</p><p>Let&rsquo;s check if this is a hash of some sorts.<br>Note that Kali/ParrotOS have <code>hashid</code> and/or <code>hash-identifier</code> installed, but I usually get more results using the online version.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ hash-identifier 
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#########################################################################</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#	 __  __ 		    __		 ______    _____	   #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#	/\ \/\ \		   /\ \ 	/\__  _\  /\  _ `\	   #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#	\ \ \_\ \     __      ____ \ \ \___	\/_/\ \/  \ \ \/\ \	   #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#	 \ \  _  \  /&#39;__`\   / ,__\ \ \  _ `\	   \ \ \   \ \ \ \ \	   #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#	  \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \	    \_\ \__ \ \ \_\ \	   #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#	   \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/	   #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#	    \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/  v1.1 #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#								 By Zion3R #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#							www.Blackploit.com #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#						       Root@Blackploit.com #</span>
+</span></span><span style=display:flex><span>   <span style=color:#75715e>#########################################################################</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   -------------------------------------------------------------------------
+</span></span><span style=display:flex><span> HASH: SFRCe0RJUjNjdEx5XzFuX1BsNDFuX1NpN2V9
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> Not Found.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   -------------------------------------------------------------------------
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$ hashid <span style=color:#e6db74>&#34;SFRCe0RJUjNjdEx5XzFuX1BsNDFuX1NpN2V9&#34;</span>
+</span></span><span style=display:flex><span>Analyzing <span style=color:#e6db74>&#39;SFRCe0RJUjNjdEx5XzFuX1BsNDFuX1NpN2V9&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>+<span style=color:#f92672>]</span> Unknown hash
+</span></span><span style=display:flex><span>$ hashid -e SFRCe0RJUjNjdEx5XzFuX1BsNDFuX1NpN2V9
+</span></span><span style=display:flex><span>Analyzing <span style=color:#e6db74>&#39;SFRCe0RJUjNjdEx5XzFuX1BsNDFuX1NpN2V9&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>+<span style=color:#f92672>]</span> BigCrypt
+</span></span></code></pre></div><figure class=center><img src=/img/htb-misdirection-hashanalyzer.png><figcaption class=center>Online Hash Analyzer</figcaption></figure><p>Note how the online Hash Analyzer hints that this might be a base64 encoded string…</p><h2 id=getting-the-flag>Getting the flag</h2><p>Let&rsquo;s base64 decode the &ldquo;hash&rdquo; we discovered:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>$ base64 -d secret.txt 
+</span></span><span style=display:flex><span>HTB<span style=color:#f92672>{</span>DIR3ctLy_1n_Pl41n_Si7e<span style=color:#f92672>}</span>
+</span></span></code></pre></div><hr><div class=footer><a class=previous-post href="https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-inferno/?ref=footer"><span style=font-weight:700>« Previous</span><br>Inferno</a><div class=next-post><a href="https://dev.sequr.be/blog/hackthebox/challenge/hackthebox-eternalloop/?ref=footer"><span style=font-weight:700>Next »</span><br>Eternal Loop</a></div></div></div></main><div class=article-toc><div class=toc-wrapper><h4 id=contents></h4><nav id=TableOfContents><ul><li><a href=#challenge-info>Challenge info</a></li><li><a href=#the-challenge>The challenge</a></li><li><a href=#getting-the-flag>Getting the flag</a></li></ul></nav></div></div></div></body></html>
