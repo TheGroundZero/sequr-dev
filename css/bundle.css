@@ -1,0 +1,1365 @@
+/* Allow room to import more stylesheets */
+body {
+  --sidebar-bg-color: h.$sidebar_bg_color;
+  --sidebar-img-border-color: h.$sidebar_img_border_color;
+  --sidebar-p-color: h.$sidebar_p_color;
+  --sidebar-h1-color: h.$sidebar_h1_color;
+  --sidebar-a-color: h.$sidebar_a_color;
+  --sidebar-socials-color: h.$sidebar_socials_color;
+  --text-color: h.$text_color;
+  --bkg-color: h.$content_bg_color;
+  --post-title-color: h.$post_title_color;
+  --list-color: h.$list_color;
+  --link-color: h.$link_color;
+  --date-color: h.$date_color;
+  --table-border-color: h.$table_border_color;
+  --table-stripe-color: h.$table_stripe_color;
+  --code-color: h.$code_color;
+  --code-background-color: h.$code_background_color;
+  --code-block-color: h.$code_block_color;
+  --code-block-background-color: h.$code_block_background_color;
+  --moon-sun-color: h.$moon_sun_color;
+  --moon-sun-background-color: h.$moon_sun_background_color;
+}
+
+body.dark-theme {
+  --text-color: h.$text_color_dark;
+  --bkg-color: h.$content_bg_color_dark;
+  --post-title-color: h.$post_title_color_dark;
+  --list-color: h.$list_color_dark;
+  --link-color: h.$link_color_dark;
+  --date-color: h.$date_color_dark;
+  --table-border-color: h.$table_border_color_dark;
+  --table-stripe-color: h.$table_stripe_color_dark;
+  --code-color: h.$code_color_dark;
+  --code-background-color: h.$code_background_color_dark;
+  --code-block-color: h.$code_block_color_dark;
+  --code-block-background-color: h.$code_block_background_color_dark;
+}
+
+body {
+  background-color: var(--bkg-color);
+}.sidebar-about img {
+    border-radius: 0;
+    height: auto;
+}/* Styling for the copy button displayed in code blocks */
+.copy-success {
+  background: none;
+  border: none;
+
+  background-image: url("/icons/copy_success.svg");
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 10;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+
+  width: 24px;
+  height: 24px;
+  background-image: url("/icons/copy_content.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 10;
+
+  padding: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.copy-button:hover {
+  opacity: 0.8;
+}
+
+.copy-button:active {
+  transform: scale(0.95);
+  opacity: 0.7; 
+}
+
+.code-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Syntax highlighting styling*/
+.hll { background-color: #ffffcc }
+ /*{ background: #f0f3f3; }*/
+.c { color: #999; } /* Comment */
+.err { color: #AA0000; background-color: #FFAAAA } /* Error */
+.k { color: #006699; } /* Keyword */
+.o { color: #555555 } /* Operator */
+.cm { color: #0099FF; font-style: italic } /* Comment.Multiline */
+.cp { color: #009999 } /* Comment.Preproc */
+.c1 { color: #999; } /* Comment.Single */
+.cs { color: #999; } /* Comment.Special */
+.gd { background-color: #FFCCCC; border: 1px solid #CC0000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #003300; } /* Generic.Heading */
+.gi { background-color: #CCFFCC; border: 1px solid #00CC00 } /* Generic.Inserted */
+.go { color: #AAAAAA } /* Generic.Output */
+.gp { color: #000099; } /* Generic.Prompt */
+.gs { } /* Generic.Strong */
+.gu { color: #003300; } /* Generic.Subheading */
+.gt { color: #99CC66 } /* Generic.Traceback */
+.kc { color: #006699; } /* Keyword.Constant */
+.kd { color: #006699; } /* Keyword.Declaration */
+.kn { color: #006699; } /* Keyword.Namespace */
+.kp { color: #006699 } /* Keyword.Pseudo */
+.kr { color: #006699; } /* Keyword.Reserved */
+.kt { color: #007788; } /* Keyword.Type */
+.m { color: #FF6600 } /* Literal.Number */
+.s { color: #d44950 } /* Literal.String */
+.na { color: #4f9fcf } /* Name.Attribute */
+.nb { color: #336666 } /* Name.Builtin */
+.nc { color: #00AA88; } /* Name.Class */
+.no { color: #336600 } /* Name.Constant */
+.nd { color: #9999FF } /* Name.Decorator */
+.ni { color: #999999; } /* Name.Entity */
+.ne { color: #CC0000; } /* Name.Exception */
+.nf { color: #CC00FF } /* Name.Function */
+.nl { color: #9999FF } /* Name.Label */
+.nn { color: #00CCFF; } /* Name.Namespace */
+.nt { color: #2f6f9f; } /* Name.Tag */
+.nv { color: #003333 } /* Name.Variable */
+.ow { color: #000000; } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #FF6600 } /* Literal.Number.Float */
+.mh { color: #FF6600 } /* Literal.Number.Hex */
+.mi { color: #FF6600 } /* Literal.Number.Integer */
+.mo { color: #FF6600 } /* Literal.Number.Oct */
+.sb { color: #CC3300 } /* Literal.String.Backtick */
+.sc { color: #CC3300 } /* Literal.String.Char */
+.sd { color: #CC3300; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #CC3300 } /* Literal.String.Double */
+.se { color: #CC3300; } /* Literal.String.Escape */
+.sh { color: #CC3300 } /* Literal.String.Heredoc */
+.si { color: #AA0000 } /* Literal.String.Interpol */
+.sx { color: #CC3300 } /* Literal.String.Other */
+.sr { color: #33AAAA } /* Literal.String.Regex */
+.s1 { color: #CC3300 } /* Literal.String.Single */
+.ss { color: #FFCC33 } /* Literal.String.Symbol */
+.bp { color: #336666 } /* Name.Builtin.Pseudo */
+.vc { color: #003333 } /* Name.Variable.Class */
+.vg { color: #003333 } /* Name.Variable.Global */
+.vi { color: #003333 } /* Name.Variable.Instance */
+.il { color: #FF6600 } /* Literal.Number.Integer.Long */
+
+.css .o,
+.css .o + .nt,
+.css .nt + .nt { color: #999; }
+/* fira-sans-300 - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local(''),
+       url('/fonts/fira-sans-v16-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/fira-sans-v16-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* fira-sans-300italic - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local(''),
+       url('/fonts/fira-sans-v16-latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/fira-sans-v16-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* fira-sans-regular - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/fira-sans-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/fira-sans-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* fira-sans-italic - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/fira-sans-v16-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/fira-sans-v16-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* pt-sans-regular - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/pt-sans-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/pt-sans-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* pt-sans-italic - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/pt-sans-v17-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/pt-sans-v17-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* pt-sans-700 - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/fonts/pt-sans-v17-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/pt-sans-v17-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* pt-sans-700italic - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+       url('/fonts/pt-sans-v17-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/pt-sans-v17-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* abril-fatface-regular - latin */
+@font-face {
+  font-family: 'Abril Fatface';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/abril-fatface-v19-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/abril-fatface-v19-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/*
+ *  __                  __
+ * /\ \                /\ \
+ * \ \ \___   __  __   \_\ \     __
+ *  \ \  _ `\/\ \/\ \  /'_` \  /'__`\
+ *   \ \ \ \ \ \ \_\ \/\ \_\ \/\  __/
+ *    \ \_\ \_\/`____ \ \___,_\ \____\
+ *     \/_/\/_/`/___/> \/__,_ /\/____/
+ *                /\___/
+ *                \/__/
+ *
+ * Designed, built, and released under MIT license by @mdo. Learn more at
+ * https://github.com/poole/hyde.
+ */
+
+
+/*
+ * Contents
+ *
+ * Global resets
+ * Sidebar
+ * Container
+ * Reverse layout
+ * Themes
+ */
+
+
+/*
+ * Global resets
+ *
+ * Update the foundational and global aspects of the page.
+ */
+
+html {
+  font-family: "Fira Sans", sans-serif;
+    font-weight:300;
+
+}
+@media (min-width: 48em) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 58em) {
+  html {
+    font-size: 20px;
+  }
+}
+
+pre {
+  tab-size:4;
+}
+
+/*
+ * Sidebar
+ *
+ * Flexible banner for housing site name, intro, and "footer" content. Starts
+ * out above content in mobile and later moves to the side with wider viewports.
+ */
+
+.sidebar {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: rgba(255,255,255,.5);
+  flex-shrink: 0;
+}
+@media (min-width: 48em) {
+  .sidebar {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 18rem;
+    text-align: left;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(70, 70, 70) auto;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color:rgb(70, 70, 70);
+    border-radius: 10px;
+  }
+
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color:rgb(150, 150, 150);
+  }
+}
+
+/* Sidebar links */
+.sidebar a, li {
+  color: var(--sidebar-a-color);
+}
+
+/* About section */
+.sidebar-about {
+  text-align: center;
+  color: var(--sidebar-p-color);
+}
+.sidebar-about h1 {
+  color: var(--sidebar-h1-color);
+  margin-top: 0;
+  font-weight:300;
+  font-size: 1.5em;
+  font-family: "Abril Fatface", serif;
+}
+
+/* Sidebar nav */
+.sidebar-nav {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.subnav {
+ list-style: none;
+  padding-left: 0;
+}
+
+.sidebar-nav-item {
+  display: block;
+}
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus {
+  text-decoration: underline;
+}
+.sidebar-nav-item.active {
+  font-weight: bold;
+}
+
+/* Sticky sidebar
+ *
+ * Add the `sidebar-sticky` class to the sidebar's container to affix it the
+ * contents to the bottom of the sidebar in tablets and up.
+ */
+
+@media (min-width: 48em) {
+  .sidebar-sticky {
+    top: 1rem;
+    width: 16rem;
+  }
+}
+
+
+/* Container
+ *
+ * Align the contents of the site above the proper threshold with some margin-fu
+ * with a 25%-wide `.sidebar`.
+ */
+
+.content {
+  padding-top:    2rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 48em) {
+  .content {
+    max-width: 38rem;
+    margin-left: 2rem;
+    margin-right: 1.75rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .content {
+    max-width: 44rem;
+    margin-left: 2rem;
+    margin-right: 1.75rem;
+  }
+}
+
+.footnote {
+  font-size: 0.7em;
+  margin-top: 0.5rem;
+  color: var(--sidebar-p-color);
+}
+
+.go {
+  color: #444444;
+}
+
+.badge {
+  display:inline;
+  vertical-align: bottom;
+}
+ 
+.badges {
+  float: right;
+}
+
+.brand {
+  font-size: 4.0em;
+  margin-bottom: 0;
+}
+
+/*
+ * Reverse layout
+ */
+@media (min-width: 48em) {
+  .content {
+    max-width: 38rem;
+    margin-left: 1.75rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .content {
+    max-width: 44rem;
+    margin-left: 1.75rem;
+    margin-right: 2rem;
+  }
+}
+
+/*
+ * Themes
+ *
+ * As of v1.1, Hyde includes optional themes to color the sidebar and links
+ * within blog posts. To use, add the class of your choosing to the `body`.
+ */
+
+/* Base16 (http://chriskempson.github.io/base16/#default) */
+
+/* Red */
+.theme-base-08 .sidebar {
+  background-color: #ac4142;
+}
+.theme-base-08 .content a,
+.theme-base-08 .related-posts li a:hover {
+  color: #ac4142;
+}
+
+/* Orange */
+.theme-base-09 .sidebar {
+  background-color: #d28445;
+}
+.theme-base-09 .content a,
+.theme-base-09 .related-posts li a:hover {
+  color: #d28445;
+}
+
+/* Yellow */
+.theme-base-0a .sidebar {
+  background-color: #f4bf75;
+}
+.theme-base-0a .content a,
+.theme-base-0a .related-posts li a:hover {
+  color: #f4bf75;
+}
+
+/* Green */
+.theme-base-0b .sidebar {
+  background-color: #90a959;
+}
+.theme-base-0b .content a,
+.theme-base-0b .related-posts li a:hover {
+  color: #90a959;
+}
+
+/* Cyan */
+.theme-base-0c .sidebar {
+  background-color: #75b5aa;
+}
+.theme-base-0c .content a,
+.theme-base-0c .related-posts li a:hover {
+  color: #75b5aa;
+}
+
+/* Blue */
+.theme-base-0d .sidebar {
+  background-color: #6a9fb5;
+}
+.theme-base-0d .content a,
+.theme-base-0d .related-posts li a:hover {
+  color: #6a9fb5;
+}
+
+/* Magenta */
+.theme-base-0e .sidebar {
+  background-color: #aa759f;
+}
+.theme-base-0e .content a,
+.theme-base-0e .related-posts li a:hover {
+  color: #aa759f;
+}
+
+/* Brown */
+.theme-base-0f .sidebar {
+  background-color: #8f5536;
+}
+.theme-base-0f .content a,
+.theme-base-0f .related-posts li a:hover {
+  color: #8f5536;
+}
+body {
+    background-color: var(--bkg-color);
+}
+
+body.layout-reverse .container.content {
+   direction: rtl;
+}
+
+body.layout-reverse .wrapper {
+   justify-content: flex-end;
+   flex-direction: row-reverse;
+}
+
+.sub-heading {
+    color: var(--sidebar-p-color);
+}
+
+@media (min-width: 48em) {
+    .bullet {
+        margin-left: 1em;
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        text-decoration-thickness: 1%;
+    }
+    .sub-heading {
+        margin-left: 1em;
+    }
+    .btn-light-dark svg {
+        margin: auto;
+        width: 20px;
+        height: 20px;
+        color: black;
+    }
+    .container.content {
+        overflow-y: auto;
+        padding-right: 2rem;
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 48em) {
+    body > .wrapper, body.layout-reverse .wrapper {
+       flex-direction: column;
+    }
+    body {
+       overflow: auto !important;
+       height: auto !important;
+    }
+    .heading {
+        font-weight: 400;
+    }
+    .entries {
+        padding-left: 0em;
+    }
+    .btn-light-dark svg {
+        margin: auto;
+        width: 20px;
+        height: 20px;
+        color: black;
+    }
+}
+
+ /* Handles dark/light themes */
+h1, h2, h3, h4, h5, strong {
+    color: var(--text-color);
+}
+.content div, p, table {
+    color: var(--text-color);
+}
+.page-title, .post-title, .post-title a {
+    color: var(--post-title-color);
+}
+.content li, li > p {
+    color: var(--list-color);
+}
+.content code {
+    color: var(--code-color);
+    background-color: var(--code-background-color) !important;
+}
+.content a code{
+    color: var(--link-color);
+}
+.content pre {
+  color: var(--code-block-color);
+  background-color: var(--code-block-background-color) !important;
+}
+.content pre code {
+  color: var(--code-block-color);
+  background-color: transparent !important;
+}
+.btn-light-dark .moon {
+    color: var(--moon-sun-color);
+}
+.btn-light-dark .sun {
+    color: var(--moon-sun-color);
+}
+.btn-light-dark {
+    padding: 0;
+    margin: 1em;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--moon-sun-background-color);
+}
+/* ************************** */
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+body > .wrapper {
+    display: flex;
+    height: 100%;
+}
+.container.content {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.layout-reverse .container.content {
+    padding-right: 0;
+    padding-left: 2rem;
+}
+.container.content::-webkit-scrollbar {
+   width: 3px;
+}
+.container.content::-webkit-scrollbar-thumb {
+   border-radius: 1.5px;
+}
+.container.content::-webkit-scrollbar-track {
+   margin: 5.5em 0;
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg-color);
+}
+.lead {
+  text-align: center;
+  color: var(--sidebar-p-color);
+}
+.sidebar-about img {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 2px solid var(--sidebar-img-border-color);
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
+}
+.social {
+    margin-right: 0.5em;
+    text-decoration: none !important;
+    color: var(--sidebar-socials-color) !important;
+}
+.heading {
+    margin-top: 1em;
+}
+.post-date {
+    display: inline-block;
+    color: var(--date-color);
+}
+.info span {
+    display: inline-block;
+}
+.info ul {
+    display: inline-block;
+    float: right;
+}
+.info ul li {
+    margin-left: 0.5em;
+}
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.reading-time {
+    color: gray;
+    font-style: italic;
+}
+.newsletters .help-block-for-success {
+    display: none;
+    margin: 0.25rem 1rem 0.25rem 0;
+    text-align: center;
+    color: green;
+}
+.newsletters .help-block-for-error {
+    display: none;
+    margin: 0.25rem 1rem 0.25rem 0;
+    text-align: center;
+    color: #de0928;
+}
+.newsletters .help-block-show {
+    display: block;
+}
+.newsletters form {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+.newsletters .email-subscription-form-hide {
+    display: none;
+}
+.newsletters label {
+    margin: 0.25rem 1rem 0.25rem 0;
+    text-align: center;
+}
+.newsletters input {
+    margin: 0.25rem 1rem 0.25rem 0;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--text-color);
+    border-radius: 0.25rem;
+}
+.newsletters input:focus-visible {
+    outline: none;
+}
+.newsletters button {
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--text-color);
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin: 0.25rem 0;
+}
+.tags {
+    padding-left: 0em;
+}
+.tags li {
+    display: inline;
+    text-decoration: none;
+}
+.tags li a {
+    color: var(--table-stripe-color);
+    display: inline-block;
+    padding: 0em 0.7em;
+    text-align: center;
+    font-size: 0.7em;
+    background-color: var(--list-color);
+    border-radius: 0.2em;
+}
+/* Tables */
+table {
+  margin-bottom: 1rem;
+  width: 100%;
+  border: 1px solid var(--table-border-color);
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: .25rem .5rem;
+  border: 1px solid var(--table-border-color);
+}
+tbody tr:nth-child(odd) td,
+tbody tr:nth-child(odd) th {
+  background-color: var(--table-stripe-color);
+}
+
+.entries li {
+    display: flex;
+}
+.entries li .title {
+    order: 1;
+}
+.entries li .published {
+    order: 3;
+}
+.entries li::after {
+    background-image: radial-gradient(circle, currentcolor 1px, transparent 1.5px);
+    background-position: bottom;
+    background-size: 1ex 3.5px;
+    background-repeat: space no-repeat;
+    content: "";
+    flex-grow: 1;
+    height: 1.1em;
+    order: 2;
+}
+.article-toc {
+    display: none;
+    font-size: 0.9em;
+    width: 20em;
+    margin-top: 5em;
+    overflow-y: auto;
+    line-height: 1.4em;
+    max-height: 85%;
+}
+.article-toc .toc-wrapper{
+    position: fixed;
+}
+.article-toc nav {
+    margin-left: 1em;
+}
+.article-toc h4 {
+    margin-left: 0;
+}
+.article-toc ul {
+    margin-bottom: 0;
+    padding: 0;
+}
+.article-toc li {
+    list-style: none;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+.article-toc li a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+.article-toc li.active {
+    font-weight: bold;
+}
+.article-toc li.inactive {
+    font-weight: 300;
+}
+@media screen and (min-width: 100em) {
+    .article-toc {
+        display: block;
+    }
+}
+.next-post {
+    text-align: right;
+    float: right;
+}
+.previous-post {
+    float: left;
+}
+.content pre code {
+    white-space: pre;
+}
+div.highlight pre {
+    overflow-x: auto;
+}
+#page-nav {
+    text-align: center;
+}
+#page-nav a {
+    margin: 0 0.2em;
+}
+#page-nav span {
+    margin: 0 0.2em;
+}
+.next {
+    float: right;
+    display: inline;
+}
+.prev {
+    float: left;
+    display: inline;
+}
+.current {
+    color: var(--text-color);
+}
+/*
+ *                        ___
+ *                       /\_ \
+ *  _____     ___     ___\//\ \      __
+ * /\ '__`\  / __`\  / __`\\ \ \   /'__`\
+ * \ \ \_\ \/\ \_\ \/\ \_\ \\_\ \_/\  __/
+ *  \ \ ,__/\ \____/\ \____//\____\ \____\
+ *   \ \ \/  \/___/  \/___/ \/____/\/____/
+ *    \ \_\
+ *     \/_/
+ *
+ * Designed, built, and released under MIT license by @mdo. Learn more at
+ * https://github.com/poole/poole.
+ */
+
+
+/*
+ * Contents
+ *
+ * Body resets
+ * Custom type
+ * Messages
+ * Container
+ * Masthead
+ * Posts and pages
+ * Pagination
+ * Reverse layout
+ * Themes
+ */
+
+
+/*
+ * Body resets
+ *
+ * Update the foundational and global aspects of the page.
+ */
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+@media (min-width: 38em) {
+  html {
+    font-size: 20px;
+  }
+}
+
+body {
+  color: #515151;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+/* No `:visited` state is required by default (browsers will use `a`) */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+/* `:focus` is linked to `:hover` for basic accessibility */
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #313131;
+  text-rendering: optimizeLegibility;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+h3 {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+}
+h4, h5, h6 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* Body text */
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+strong {
+  color: #303030;
+}
+
+
+/* Lists */
+ul, ol, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-bottom: .5rem;
+}
+
+/* Misc */
+hr {
+  position: relative;
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 2px solid #ccc;
+  border-bottom: 1px solid #fff;
+}
+
+abbr {
+  font-size: 85%;
+  font-weight: bold;
+  color: #555;
+  text-transform: uppercase;
+}
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted #e5e5e5;
+}
+
+/* Code */
+code,
+pre {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+}
+code {
+  padding: .25em .5em;
+  font-size: 85%;
+  color: #bf616a;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+}
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: .8rem;
+  line-height: 1.4;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f9f9f9;
+}
+pre code {
+  padding: 0;
+  font-size: 100%;
+  color: inherit;
+  background-color: transparent;
+}
+.highlight {
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+.highlight pre {
+  margin-bottom: 0;
+}
+
+/* Quotes */
+blockquote {
+  padding: .5rem 1rem;
+  margin: .8rem 0;
+  color: #7a7a7a;
+  border-left: .25rem solid #e5e5e5;
+}
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 30em) {
+  blockquote {
+    padding-right: 5rem;
+    padding-left: 1.25rem;
+  }
+  .container {
+    margin-right: auto;
+  }
+}
+
+img {
+  display: block;
+  margin: 0 0 1rem;
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*
+ * Custom type
+ *
+ * Extend paragraphs with `.lead` for larger introductory text.
+ */
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+
+/*
+ * Messages
+ *
+ * Show alert messages to users. You may add it to single elements like a `<p>`,
+ * or to a parent if there are multiple elements to show.
+ */
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #717171;
+  background-color: #f9f9f9;
+}
+
+
+/*
+ * Container
+ *
+ * Center the page content.
+ */
+
+.container {
+  max-width: 38rem;
+  padding-left:  1rem;
+  padding-right: 1rem;
+/*  margin-left:  auto;*/
+}
+
+
+/*
+ * Masthead
+ *
+ * Super small header above the content for site name and short description.
+ */
+
+.masthead {
+  padding-top:    1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+.masthead-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #505050;
+}
+.masthead-title a {
+  color: #505050;
+}
+.masthead-title small {
+  font-size: 75%;
+  font-weight: 400;
+  color: #c0c0c0;
+  letter-spacing: 0;
+}
+
+
+/*
+ * Posts and pages
+ *
+ * Each post is wrapped in `.post` and is used on default and post layouts. Each
+ * page is wrapped in `.page` and is only used on the page layout.
+ */
+
+.page,
+.post {
+  margin-bottom: 4em;
+}
+
+/* Blog post or page title */
+.page-title,
+.post-title,
+.post-title a {
+  color: #303030;
+}
+.page-title,
+.post-title {
+  margin-top: 0;
+}
+
+/* Meta data line below post title */
+.post-date {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
+}
+
+/* Related posts */
+.related {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid #eee;
+}
+.related-posts {
+  padding-left: 0;
+  list-style: none;
+}
+.related-posts h3 {
+  margin-top: 0;
+}
+.related-posts li small {
+  font-size: 75%;
+  color: #999;
+}
+.related-posts li a:hover {
+  color: #268bd2;
+  text-decoration: none;
+}
+.related-posts li a:hover small {
+  color: inherit;
+}
+.comments {
+    margin-top: 3em;
+}
+
+
+/*
+ * Pagination
+ *
+ * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
+ * there are no more previous or next posts to show.
+ */
+
+.pagination {
+  overflow: hidden; /* clearfix */
+  margin-left: -1rem;
+  margin-right: -1rem;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  color: #ccc;
+  text-align: center;
+}
+
+/* Pagination items can be `span`s or `a`s */
+.pagination-item {
+  display: block;
+  padding: 1rem;
+  border: 1px solid #eee;
+}
+.pagination-item:first-child {
+  margin-bottom: -1px;
+}
+
+/* Only provide a hover state for linked pagination items */
+a.pagination-item:hover {
+  background-color: #f5f5f5;
+}
+
+@media (min-width: 30em) {
+  .pagination {
+    margin: 3rem 0;
+  }
+  .pagination-item {
+    float: left;
+    width: 50%;
+  }
+  .pagination-item:first-child {
+    margin-bottom: 0;
+    border-top-left-radius:    4px;
+    border-bottom-left-radius: 4px;
+  }
+  .pagination-item:last-child {
+    margin-left: -1px;
+    border-top-right-radius:    4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+/* Style the tabs */
+.tabs {
+  overflow: hidden;
+  border-bottom: 1px solid var(--text-color);
+}
+
+@media (min-width: 48em) {
+    /* Style the buttons that are used to open the tabs content */
+    .tabs button {
+        font-family: Menlo, Monaco, "Courier New", monospace;
+        font-size: 0.8em;
+    background-color: var(--bkg-color);
+    color: var(--text-color);
+    float: left;
+    border-top: 1px solid var(--text-color);
+    border-right: 1px solid var(--text-color);
+    border-bottom: none;
+    border-left: 1px solid var(--text-color);
+    border-radius: 5px 5px 0 0;
+    margin: 0 0.2em 0 0;
+    outline: none;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    transition: 0.3s;
+    }
+}
+
+@media (max-width: 48em) {
+    /* Style the buttons that are used to open the tabs content */
+    .tabs button {
+        font-family: Menlo, Monaco, "Courier New", monospace;
+        font-size: 0.8em;
+    background-color: var(--bkg-color);
+    color: var(--text-color);
+    float: left;
+    border-top: 1px solid var(--text-color);
+    border-right: 1px solid var(--text-color);
+    border-bottom: none;
+    border-left: 1px solid var(--text-color);
+    border-radius: 5px 5px 0 0;
+    margin: 0 0.2em 0 0;
+    outline: none;
+    cursor: pointer;
+    padding: 0.7em 1.3em;
+    transition: 0.3s;
+    }
+
+}
+
+/* Change background color of buttons on hover */
+.tabs button:hover {
+  background-color: #ddd;
+  color: var(--dark-gray);
+}
+
+/* Create an active/current tablink class */
+.tabs button.active {
+  background-color: #ccc;
+  color: #000;
+}
+
+/* Style the tabs content */
+.tabcontent {
+  display: none;
+  padding-top: 0.2em;
+}
