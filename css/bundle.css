@@ -1,4 +1,3 @@
-/* Allow room to import more stylesheets */
 body {
   --sidebar-bg-color: h.$sidebar_bg_color;
   --sidebar-img-border-color: h.$sidebar_img_border_color;
