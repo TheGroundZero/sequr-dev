@@ -39,8 +39,9 @@ body.dark-theme {
 body {
   background-color: var(--bkg-color);
 }.sidebar-about img {
-    border-radius: 0;
-    height: auto;
+    border-radius: 0 !important;
+    height: auto !important;
+    border: 0 !important;
 }/*
  *                        ___
  *                       /\_ \
