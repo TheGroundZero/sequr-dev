@@ -38,10 +38,23 @@ body.dark-theme {
 
 body {
   background-color: var(--bkg-color);
-}.sidebar-about img {
+}/* CUSTOM CSS */
+.sidebar-about img {
     border-radius: 0 !important;
     height: auto !important;
     border: 0 !important;
+}
+
+table tr th:empty {
+    display: none;
+}
+
+.background-image {
+    background-image: url("/img/background.jpg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: auto;
+    background-position: initial;
 }/*
  *                        ___
  *                       /\_ \
