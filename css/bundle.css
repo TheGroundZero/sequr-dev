@@ -1378,3 +1378,7 @@ table tr th:empty {
     background-size: auto;
     background-position: initial;
 }
+
+.whitespace {
+    white-space: break-spaces;
+}
