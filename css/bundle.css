@@ -38,23 +38,6 @@ body.dark-theme {
 
 body {
   background-color: var(--bkg-color);
-}/* CUSTOM CSS */
-.sidebar-about img {
-    border-radius: 0 !important;
-    height: auto !important;
-    border: 0 !important;
-}
-
-table tr th:empty {
-    display: none;
-}
-
-.background-image {
-    background-image: url("/img/background.jpg");
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-size: auto;
-    background-position: initial;
 }/*
  *                        ___
  *                       /\_ \
@@ -1376,4 +1359,22 @@ div.highlight pre {
   src: local(''),
        url('/fonts/abril-fatface-v19-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('/fonts/abril-fatface-v19-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* CUSTOM CSS */
+.sidebar-about img {
+    border-radius: 0 !important;
+    height: auto !important;
+    border: 0 !important;
+}
+
+table tr th:empty {
+    display: none;
+}
+
+.background-image {
+    background-image: url("/img/background.jpg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: auto;
+    background-position: initial;
 }
