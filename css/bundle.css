@@ -1362,9 +1362,9 @@ div.highlight pre {
 }
 /* CUSTOM CSS */
 .sidebar-about img {
-    border-radius: 0 !important;
-    height: auto !important;
-    border: 0 !important;
+    border-radius: 0;
+    height: auto;
+    border: 0;
 }
 
 table tr th:empty {
