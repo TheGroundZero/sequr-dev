@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><feed xml:base="https://dev.sequr.be/" xmlns="http://www.w3.org/2005/Atom"><generator uri="https://gohugo.io/" version="0.139.4">Hugo</generator><rights>© 2019 - Sequr - CC BY-NC-SA 4.0</rights><title>
+EgotisticalSW on Sequr (dev)</title><subtitle type="html">Dev version of sequr.be. This site may break at any time.</subtitle><link href="https://dev.sequr.be/tags/egotisticalsw/" rel="alternate" type="text/html" title="html"/><link href="https://dev.sequr.be/tags/egotisticalsw/rss.xml" rel="alternate" type="application/rss+xml" title="rss"/><link href="https://dev.sequr.be/tags/egotisticalsw/atom.xml" rel="self" type="application/atom+xml" title="atom"/><icon>/favicon.ico</icon><logo>/logo.png</logo><updated>2020-07-24T00:00:00+02:00</updated><id>https://dev.sequr.be/tags/egotisticalsw/</id><author><name>Sequr</name></author><entry><title>Sauna</title><link href="https://dev.sequr.be/blog/2020/04/sauna/" title="Sauna" rel="self" type="text/html"/><id>https://dev.sequr.be/blog/2020/04/sauna/</id><author><name>DezeStijn</name></author><published>2020-04-21T20:08:57+02:00</published><updated>2020-07-24T00:00:00+02:00</updated><content type="html"><![CDATA[<p><strong>Note to fellow-HTBers:</strong> Only write-ups of retired HTB machines or challenges are allowed.</p>
+<h2 id="machine-info">Machine info</h2>
+<p>Traverxec [by <a href="https://www.hackthebox.eu/home/users/profile/94858" rel="external" target="_blank">egotisticalSW</a>]<br>
+IP: 10.10.10.175<br>
+OS: Windows<br>
+Difficulty: Easy<br>
+Release: 15 Feb 2020<br>
+Retired: TBD</p>
+<h2 id="recon">Recon</h2>
+<h3 id="nmap">Nmap</h3>
+<p>As usual we kick off with a …</p>]]></content><link href="https://dev.sequr.be/blog/2020/06/nest/" title="Nest" rel="related" type="text/html"/><link href="https://dev.sequr.be/blog/2020/05/quickr/" title="QuickR" rel="related" type="text/html"/><link href="https://dev.sequr.be/blog/2020/05/openadmin/" title="Openadmin" rel="related" type="text/html"/><link href="https://dev.sequr.be/blog/2020/03/infiltration/" title="Infiltration" rel="related" type="text/html"/><link href="https://dev.sequr.be/blog/2020/03/easy-phish/" title="Easy Phish" rel="related" type="text/html"/></entry></feed>
