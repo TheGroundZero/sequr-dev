@@ -3373,6 +3373,156 @@ figcaption.center {
        url('/fonts/abril-fatface-v19-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('/fonts/abril-fatface-v19-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+.ai-attribution {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 2em;
+}
+
+.ai-attribution__icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+
+    svg {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+.ai-attribution__text {
+    display: inline-flex;
+}
+
+body {
+    .ai-attribution__icon--light {
+        display: inline-flex;
+    }
+
+    .ai-attribution__icon--dark {
+        display: none;
+    }
+}
+
+body.dark-theme {
+    .ai-attribution__icon--light {
+        display: none;
+    }
+
+    .ai-attribution__icon--dark {
+        display: inline-flex;
+    }
+}
+.webmentions {
+    padding-bottom: 2em;
+}
+
+/* One row per wm-property: group icon followed by author avatars */
+.webmention-lists {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.webmention-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.webmention-list[hidden] {
+    display: none;
+}
+
+.webmention-list li {
+    margin: 0;
+    padding: 0;
+}
+
+.webmention-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.25rem;
+    color: var(--text-color, currentColor);
+
+    svg {
+        width: 1em;
+        height: 1em;
+    }
+
+    /* Icons ship with a hard-coded black stroke; follow the theme instead */
+    svg .st0 {
+        stroke: currentColor;
+    }
+}
+
+.webmention-item__link {
+    display: inline-flex;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.webmention-item__link:hover,
+.webmention-item__link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+    text-decoration: none;
+}
+
+.webmention-item .h-card {
+    display: inline-flex;
+}
+
+.webmention-item__photo {
+    display: block;
+    width: 1em;
+    height: 1em;
+    margin: 0;          /* undo poole's global `img { margin: 0 0 1rem }` */
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--table-border-color, rgba(128, 128, 128, 0.25));
+}
+
+
+.webmention-item__photo--fallback {
+    color: currentColor;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 1em;
+
+    path {
+        fill: currentColor;
+    }
+}
+
+/* Author names stay in the DOM for microformats parsers and screen readers */
+.webmention-item__name,
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.webmention-status {
+    margin: 0;
+    font-style: italic;
+    opacity: 0.8;
+}
 /* CUSTOM CSS */
 .sidebar-about img {
     border-radius: 0;
